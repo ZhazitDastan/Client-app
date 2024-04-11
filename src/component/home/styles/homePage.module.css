@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@100..900&display=swap');
+
+
+.bar {
+    font-family: "Inter", sans-serif;
+    background-color: #262626;
+    height: 96px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-inline: 32px;
+}
+
+.navBar{
+    display: flex;
+    column-gap: 55px;
+    
+}
+
+.homeLink {
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
+.HomeRightBtn {
+    margin-left: 35px;
+}
+
+.homeBTN {
+    border-radius: 20px;
+    width: 126px;
+    height: 38px;
+    cursor: pointer;
+}
+
+
+
+.fBtn {
+    text-align: center;
+    font-weight: 800;
+    font-size: 16px;
+    color: #262626;
+}
+
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    background: url("/src/assets/home_center.png");
+    background-size: cover;
+    max-width: 100vw;
+    height: 1100px;
+    padding-inline: 32px;
+}
+
+.homeTxTPosition{
+    margin-top: 60px;
+}
+
+.homeText {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-size: 100px;
+    color: #fff;
+    text-align: center;
+}
+
+.getStarted {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.PNGbtn {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: #fff;
+}
+
+.pngBtn {
+    border-radius: 20px;
+    width: 310px;
+    height: 79px;
+    background-color: #0b0c10;
+    border: none;
+    cursor: pointer;
+}
+
+.homeTxt{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/*Header end*/
+
+.homeMain{
+    max-width: 60vw;
+    margin: 0 auto;
+}
+
+.Tag {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #fee715;;
+}
+
+.MainTxt {
+    font-family: "Anton", sans-serif;;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 122%;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.MainTxt2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 6px;
+}
+
+.mainBtn {
+    border-radius: 15px;
+    background-color: #fff;
+    height: 38px;
+    font-weight: 800;
+    font-size: 16px;
+    color: black;
+    margin-top: 30px;
+}
+
+
+.sectionMain {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.space {
+    height: 100px; 
+}
+
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /*margin-right: 140px;*/
+}
+
+.imageWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.homeLogo {
+    height: 105px;
+    width: 540px;
+}
+
+/*End main*/
+
+.homeFooter {
+    width: 100vw;
+    height: 300px;
+    background-color: #262626;
+    margin-top: 170px;
+    display: flex;
+    justify-content: center;
+}
+
+.footerContainer {
+    max-width: 60vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.footerContent {
+    height: 200px;
+    width: 1100px;
+    border: 4px solid #fff;
+    border-radius: 24px;
+}
+
+.footerTxtContent{
+    display: flex;
+    justify-content: space-around;
+}
+
+.footerTxt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footerTag {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #fff;
+}
+
+.footerLink {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;
+    margin-top: 8px;
+}
+
+.linkDec {
+    text-decoration: none;
+}
+
+.footerImg {
+    margin-top: 20px;
+}
+
+.footerTxt1 {
+    height: 100px;
+    border: 3px solid #fff;
+}

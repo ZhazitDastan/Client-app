@@ -1,33 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
+import {Routes, Route, Link} from "react-router-dom";
+import {HomePage} from './component/home/HomePage.jsx'
+import {LoginPage} from './component/login/LoginPage.jsx';
+import {BillboardPage} from './component/billboard/BillboardPage.jsx';
+import {BuyNowPage} from './component/buyNow/BuyNowPage.jsx';
+import {RegistrationPage} from './component/registration/RegistrationPage.jsx';
+import {NotFoundPage} from './component/notFound/NotFoundPage.jsx';
+import {InfoPage} from './component/info/InfoPage.jsx'
 function App() {
-  const [count, setCount] = useState(0)
-
+    
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        {/*<header>*/}
+        {/*    <Link to="/">info</Link>*/}
+        {/*    <Link to="/login">login</Link>*/}
+        {/*    <Link to="/registraion">registration</Link>*/}
+        {/*    <Link to="/buynow">buy now</Link>*/}
+        {/*    <Link to="/billboard">billboard</Link>*/}
+        {/*</header>*/}
+        
+        <Routes>
+            <Route path="/" element={<HomePage />}/>
+            <Route path="/info" element={<InfoPage />}/>
+            <Route path="/login" element={<LoginPage />}/>
+            <Route path="/registration" element={<RegistrationPage />}/>
+            <Route path="/buynow" element={<BuyNowPage />}/>
+            <Route path="/billboard" element={<BillboardPage />}/>
+            <Route path="*" element={<NotFoundPage />}/>
+        </Routes>
+        
     </>
   )
 }
