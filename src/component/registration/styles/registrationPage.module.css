@@ -27,7 +27,6 @@
     color: #66fcf1;
 }
 
-
 .HomeRightBtn {
     margin-left: 35px;
 }
@@ -61,6 +60,11 @@
 .content {
     display: flex;
     justify-content: space-around;
+}
+
+.content2 {
+    display: flex;
+    justify-content: center;
 }
 
 .login {
@@ -137,6 +141,10 @@
 .btn2:hover {
     color: #000;
     background-color: #66fcf1;
+}
+
+.link {
+    color: #fff;
 }
 
 /*main end*/

@@ -131,6 +131,10 @@
     background-color: #66fcf1;
 }
 
+.link {
+    color: #fff;
+}
+
 /*main end*/
 
 .homeFooter {
@@ -194,6 +198,3 @@
     height: 100px;
     border: 3px solid #fff;
 }
-
-
-

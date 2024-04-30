@@ -6,7 +6,8 @@ import {BillboardPage} from './component/billboard/BillboardPage.jsx';
 import {BuyNowPage} from './component/buyNow/BuyNowPage.jsx';
 import {RegistrationPage} from './component/registration/RegistrationPage.jsx';
 import {NotFoundPage} from './component/notFound/NotFoundPage.jsx';
-import {InfoPage} from './component/info/InfoPage.jsx'
+import {InfoPage} from './component/info/InfoPage.jsx';
+import {SelectBillboardPage} from './component/buyNow/SelectBillboardPage.jsx';
 function App() {
     
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/login" element={<LoginPage />}/>
             <Route path="/registration" element={<RegistrationPage />}/>
             <Route path="/buynow" element={<BuyNowPage />}/>
+            <Route path="/buynow/select" element={<SelectBillboardPage />}/>
             <Route path="/billboard" element={<BillboardPage />}/>
             <Route path="*" element={<NotFoundPage />}/>
         </Routes>
