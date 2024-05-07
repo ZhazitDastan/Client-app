@@ -4,17 +4,13 @@ import Main1 from "../../assets/billboard1.png";
 import Main2 from "../../assets/billboard2.png";
 import mainSDU from "../../assets/main_SDU.png"
 import SDU from "../../assets/main_LOGO.png"
-import Footer from '../footer/Footer.jsx';
-import Header from '../header/Header.jsx';
 
 const BillboardPage = () =>{ 
     return (
         <>
-            <Header />
-
             <div className={styles.homeContainer}>
                 <div className={styles.homeTxTPosition}>
-                    <p className={styles.homeText}> BIllBOARD </p>
+                    <p className={styles.homeText}> BILLBOARD </p>
                 </div>
                 <div className={styles.getStarted}>
                     <Link to="/login">
@@ -78,8 +74,6 @@ const BillboardPage = () =>{
                     </div>
                 </div>                
             </main>
-
-            <Footer />
         </>
 )
 }

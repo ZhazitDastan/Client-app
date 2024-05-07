@@ -1,18 +1,23 @@
 import styles from "./styles/infoPage.module.css";
 import {Link} from "react-router-dom";
-import Logo from "../../assets/logo.png";
-import SDU_Logo from "../../assets/footer_SDU.png";
-import Amazon from "../../assets/footer_Amazon.png";
 import Info1 from "../../assets/info1.png"
 import mainSDU from "../../assets/main_SDU.png"
 import SDU from "../../assets/main_LOGO.png";
-import Header from '../header/Header.jsx';
-import Footer from '../footer/Footer.jsx';
 
 const InfoPage = () => {
     return (
         <>
-            <Header />
+            <div className={styles.homeContainer}>
+                <div className={styles.homeTxTPosition}>
+                    <p className={styles.homeText}> INFO </p>
+                </div>
+                <div className={styles.getStarted}>
+                    <Link to="/login">
+                        <button className={`${styles.pngBtn} ${styles.PNGbtn}`}>Get Started</button>
+                    </Link>
+                    <p className={styles.homeTxt}> Here you can information about our project.</p>
+                </div>
+            </div>
 
             <main className={styles.main}>
                 <div className={styles.mainContent}>
@@ -51,12 +56,7 @@ const InfoPage = () => {
                         <img src={SDU} alt="SDU"/>
                     </div>
                 </div>
-
-
             </main>
-
-
-            <Footer />
         </>
 
     )

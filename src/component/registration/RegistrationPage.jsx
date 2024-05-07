@@ -4,8 +4,6 @@ import Logo from "../../assets/logo.png";
 import mainBillboard from "../../assets/main_LOGO.png";
 import mainSDU from "../../assets/main_SDU.png";
 import mainAmazon from "../../assets/main_amazon.png";
-import Footer from '../footer/Footer.jsx';
-import Header from '../header/Header.jsx';
 import { useState } from "react";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -55,8 +53,6 @@ const RegistrationPage = () =>{
 
     return (
         <>
-            <Header />
-
             <main>
                 <div className={styles.container}>
                     <div className={styles.content}>
@@ -85,8 +81,6 @@ const RegistrationPage = () =>{
                     </div>
                 </div>
             </main>
-
-            <Footer />
         </>
     )
 }

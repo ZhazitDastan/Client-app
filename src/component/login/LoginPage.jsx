@@ -3,8 +3,6 @@ import {Link, useNavigate} from "react-router-dom";
 import mainSDU from "../../assets/main_SDU.png"
 import mainAmazon from "../../assets/main_amazon.png"
 import mainBillboard from "../../assets/main_LOGO.png"
-import Header from '../header/Header.jsx';
-import Footer from '../footer/Footer.jsx';
 import { useState } from "react";
 
 const LoginPage = () =>{
@@ -52,16 +50,14 @@ const LoginPage = () =>{
 
     return(
         <>
-            <Header />
-            
             <main>
                 <div className={styles.container}>
                     <div className={styles.content}>
                         <div className={styles.login}>
                             <img src={mainBillboard} alt="logo"/>
                             <form className={styles.loginForm} onSubmit={handleSubmit}>
-                                <input className={styles.inputWithIcon1} onChange={handleChange} type="text" name="username" value={formData.username} placeholder="Username"/>
-                                <input className={styles.inputWithIcon2} onChange={handleChange} type="password" name="password" value={formData.password} placeholder="Password"/>
+                                <input className={styles.inputWithIcon1} onChange={handleChange} type="text" name="username" value={formData.username} placeholder="Username" autoComplete="off"/>
+                                <input className={styles.inputWithIcon2} onChange={handleChange} type="password" name="password" value={formData.password} placeholder="Password" autoComplete="off"/>
                                 <button className={`${styles.btn} ${styles.btn1}`} type="submit">sign in</button>
                                 <div className={styles.content} style={{marginTop:'15px'}}>
                                     <Link className={styles.link}>Forgot password?</Link>
@@ -77,8 +73,6 @@ const LoginPage = () =>{
                     </div>
                 </div>
             </main>
-
-            <Footer />
         </>
     )
 }

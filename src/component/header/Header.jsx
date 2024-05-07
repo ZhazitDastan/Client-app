@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './styles/header.module.css'; 
 import Logo from "../../assets/logo.png";
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
 
+    const {pathname} = useLocation();
+
     const [item, setItem] = useState("");
+
     useEffect(() => {
-        console.log(localStorage.getItem("token"))
         setItem(localStorage.getItem("token"))
-    }, [])
+        console.log(item);
+        if(item === null){
+            logout();
+        }
+    }, [pathname])
 
     function logout() {
         localStorage.removeItem("token")
@@ -26,7 +32,7 @@ const Header = () => {
                 </div>
                 <nav>
                     <ul className={styles.navBar}>
-                        <li><NavLink className={({ isActive }) => isActive ? `${styles.homeLink} ${styles.activeHomeLink}` : styles.homeLink}  to="/info">Info</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? `${styles.homeLink} ${styles.activeHomeLink}` : styles.homeLink} to="/info">Info</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? `${styles.homeLink} ${styles.activeHomeLink}` : styles.homeLink} to="/billboard">Billboard</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? `${styles.homeLink} ${styles.activeHomeLink}` : styles.homeLink} to="/buynow">Buy now</NavLink></li>
                     </ul>
@@ -58,4 +64,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export {Header};
