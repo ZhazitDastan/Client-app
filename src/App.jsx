@@ -12,6 +12,8 @@ import {UserPage} from './component/user/UserPage.jsx';
 import {ScrollToTop} from './component/additionalFunctions/ScrollToTop.jsx';
 import {Header} from './component/header/Header.jsx';
 import {Footer} from './component/footer/Footer.jsx';
+// test 
+import {Testing} from "./component/test/testing.jsx";
 // import Map1 from './component/buyNow/Map1.jsx';
 // import AdvancedMap from './component/buyNow/AdvancedMap.jsx';
 
@@ -37,6 +39,7 @@ function App() {
             <Route path="/buynow/packages" element={<PricePackagesPage />}/>
             <Route path="/billboard" element={<BillboardPage />}/>
             <Route path="/my" element={<UserPage />}/>
+            <Route path="/test" element={<Testing />}/>
             {/* <Route path="/map1" element={<Map1 />}/>
             <Route path="/map" element={<AdvancedMap />}/> */}
             <Route path="*" element={<NotFoundPage />}/>
