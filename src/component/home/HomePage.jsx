@@ -1,15 +1,22 @@
 import styles from './styles/homePage.module.css'
 import {Link} from "react-router-dom";
-import Logo from "/src/assets/logo.png"
 import HomeLogo from "/src/assets/main_LOGO.png"
-import Header from '../header/Header.jsx';
-import Footer from '../footer/Footer.jsx';
 
 const HomePage = () =>{
     
     return (
         <>
-            <Header />
+            <div className={styles.homeContainer}>
+                <div className={styles.homeTxTPosition}>
+                    <p className={styles.homeText}> HOME </p>
+                </div>
+                <div className={styles.getStarted}>
+                    <Link to="/login">
+                        <button className={`${styles.pngBtn} ${styles.PNGbtn}`}>Get Started</button>
+                    </Link>
+                    <p className={styles.homeTxt}> Here you can information about our project.</p>
+                </div>
+            </div>
            
             <main className={styles.homeMain}>
                 <div className={styles.sectionMain}>
@@ -39,8 +46,6 @@ const HomePage = () =>{
                     </div>
                 </div>
             </main>
-            
-            <Footer />
         </>
     )
 }

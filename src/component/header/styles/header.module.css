@@ -25,11 +25,15 @@
 }
 
 .homeLink:hover {
-    transform: scale(0.9);
+    transform: scale(1.05);
 }
 
 .activeHomeLink {
     color: #66fcf1;
+}
+
+.activeHomeLink:hover {
+    transform: scale(1.05);
 }
 
 .billboardLink {
@@ -75,4 +79,6 @@
 
 .homeLeft {
     width: 255.38px;
+    display: flex;
+    align-items: center;
 }
