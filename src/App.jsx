@@ -12,8 +12,8 @@ import {UserPage} from './component/user/UserPage.jsx';
 import {ScrollToTop} from './component/additionalFunctions/ScrollToTop.jsx';
 import {Header} from './component/header/Header.jsx';
 import {Footer} from './component/footer/Footer.jsx';
-// import Map1 from './component/buyNow/Map1.jsx';
-// import AdvancedMap from './component/buyNow/AdvancedMap.jsx';
+import { ToastProvider } from 'react-toast-notifications';
+import { InsertDataPage } from './component/buyNow/InsertDataPage.jsx';
 
 function App() {
     
@@ -28,6 +28,7 @@ function App() {
         {/*</header>*/}
         <ScrollToTop /> 
         <Header />
+        <ToastProvider placement="top-center">
         <Routes>
             <Route path="/" element={<HomePage />}/>
             <Route path="/info" element={<InfoPage />}/>
@@ -35,12 +36,12 @@ function App() {
             <Route path="/registration" element={<RegistrationPage />}/>
             <Route path="/buynow" element={<SelectBillboardPage />}/>
             <Route path="/buynow/packages" element={<PricePackagesPage />}/>
+            <Route path="/buynow/insert" element={<InsertDataPage />}/>
             <Route path="/billboard" element={<BillboardPage />}/>
             <Route path="/my" element={<UserPage />}/>
-            {/* <Route path="/map1" element={<Map1 />}/>
-            <Route path="/map" element={<AdvancedMap />}/> */}
             <Route path="*" element={<NotFoundPage />}/>
         </Routes>
+        </ToastProvider>
         <Footer />
     </>
   )

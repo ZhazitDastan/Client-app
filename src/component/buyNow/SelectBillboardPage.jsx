@@ -5,6 +5,11 @@ import customMarkerImageAvailable from '../../assets/businessAvailableR.png';
 import customMarkerImageInUse from '../../assets/businessInUseR.png';
 import customMarkerImageBanned from '../../assets/businessBannedR.png';
 import { Link } from 'react-router-dom';
+import AkkentBillboard from "../../assets/billboardImages/AkkentBillboard.png";
+import ToleBiBillboard from "../../assets/billboardImages/ToleBiBillboard.png";
+import ShalyapinaBillboard from "../../assets/billboardImages/ShalyapinaBillboard.png";
+import ZhandosovaBillboard from "../../assets/billboardImages/ZhandosovaBillboard.png";
+import NazarbayevBillboard from "../../assets/billboardImages/NazarbayevBillboard.png";
 
 const containerStyle = {
   width: '800px',
@@ -199,6 +204,7 @@ function SelectBillboardPage() {
     const [showMarker, setShowMarker] = useState(false);
     const [billboards, setBillboards] = useState([]);
     const [selectedMarker, setSelectedMarker] = useState(null);
+    const [billboard1, setBillboard1] = useState("billboard");
 
     useEffect(() => {
         fetch("http://localhost:8080/api/v1/billboards/all_billboard", {
@@ -225,6 +231,14 @@ function SelectBillboardPage() {
         };
     }, []);
 
+    const imageMap = {
+      AkkentBillboard: AkkentBillboard,
+      ToleBiBillboard: ToleBiBillboard,
+      ShalyapinaBillboard: ShalyapinaBillboard,
+      ZhandosovaBillboard: ZhandosovaBillboard,
+      NazarbayevBillboard: NazarbayevBillboard
+    };
+
     const renderMarker = (marker) => {
         const iconAvailable = {
             url: customMarkerImageAvailable,
@@ -246,7 +260,7 @@ function SelectBillboardPage() {
                         key={marker.id}
                         position={{ lat: marker.lat, lng: marker.lng }}
                         icon={iconAvailable}
-                        onClick={() => {alert(`This billboard is available`); setSelectedMarker(marker)}}
+                        onClick={() => {setSelectedMarker(marker)}}
                     />
                 );
             case "In use":
@@ -255,7 +269,7 @@ function SelectBillboardPage() {
                         key={marker.id}
                         position={{ lat: marker.lat, lng: marker.lng }}
                         icon={iconInUse}
-                        onClick={() => {alert(`This billboard is being used`); setSelectedMarker(marker)}}
+                        onClick={() => {setSelectedMarker(marker)}}
                     />
                 );
             case "Banned":
@@ -264,7 +278,7 @@ function SelectBillboardPage() {
                         key={marker.id}
                         position={{ lat: marker.lat, lng: marker.lng }}
                         icon={iconBanned}
-                        onClick={() => {alert(`This billboard is banned`); setSelectedMarker(marker)}}
+                        onClick={() => {setSelectedMarker(marker)}}
                     />
                 );
             default:
@@ -284,12 +298,41 @@ function SelectBillboardPage() {
                         options={{styles:mapStyles}}
                     >
                         {showMarker && mapLoaded && billboards.map(renderMarker)}
+
+                        {selectedMarker && (
+                          <InfoWindow
+                            position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
+                            onCloseClick={() => setSelectedMarker(null)}
+                          >
+                            <div className={styles.infoWindow}>
+                              <img
+                                src={imageMap[selectedMarker.name]}
+                                alt={`Marker Image ${selectedMarker.name}`}
+                                style={{ width: "150px", height: "100px", objectFit: "cover" }}
+                              />
+                              <div className={styles.infoWindowDescription}>
+                                <p className={styles.infoWindowDescriptionName}>{selectedMarker.location}</p>
+                                {selectedMarker.status === "Banned" && (
+                                    <span className={styles.unusableText} style={{ marginTop: '5px'}}>Banned</span>
+                                )}
+                                {selectedMarker.status === "In use" && (
+                                    <span className={styles.unusableText} style={{ marginTop: '5px'}}>In use</span>
+                                )} 
+                                {selectedMarker.status === "Available" && (
+                                    <Link to={"/buynow/packages"} state={selectedMarker}>
+                                        <button className={styles.button31} style={{ marginTop: '5px'}}>BUY NOW</button>
+                                    </Link>
+                                )}
+                              </div>
+                            </div>
+                          </InfoWindow>
+                        )}
                     </GoogleMap>
                     <div className={styles.billboardList}>
                         <ul className={styles.billboardULList}>
                             {billboards.map(billboard => (
                                 <li key={billboard.id}>
-                                    <div className={styles.listItem}>
+                                    <div key={billboard.id} className={styles.listItem}> 
                                         <div className={styles.items}>
                                             <h2 className={styles.itemTitle}>{billboard.location}</h2>
                                             <div className={styles.itemStatus}>{billboard.status}</div>
@@ -302,7 +345,7 @@ function SelectBillboardPage() {
                                                 <span className={styles.unusableText}>In use</span>
                                             )} 
                                             {billboard.status === "Available" && (
-                                                <Link to={{pathname:"/buynow/packages", state:{selectedBillboard : billboard}}}>
+                                                <Link to={"/buynow/packages"} state={billboard}>
                                                     <button className={styles.mainBtn}>BUY NOW</button>
                                                 </Link>
                                             )}
@@ -312,19 +355,6 @@ function SelectBillboardPage() {
                             ))}
                         </ul>
                     </div>
-                    {/* <div className={styles.sidebar + (selectedMarker ? ` ${styles.open}` : '')}>
-                        <div className={styles.sidebarContent}>
-                            {selectedMarker ? (
-                                <>
-                                    <h1>{selectedMarker.name}</h1>
-                                    <p>Details about the selected marker...</p>
-                                    <button onClick={() => setSelectedMarker(null)}>Close</button>
-                                </>
-                            ) : (
-                                <p>Select a marker to see details.</p>
-                            )}
-                        </div>
-                    </div> */}
                 </div>
             </main>
         </LoadScriptNext>

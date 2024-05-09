@@ -35,9 +35,6 @@ const RegistrationPage = () =>{
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             });
-    
-            console.log("Form was submitted");
-    
             if (res.ok) {
                 alert("Success");
                 navigate("/login");
