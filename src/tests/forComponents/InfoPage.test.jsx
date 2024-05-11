@@ -4,15 +4,6 @@ import { BrowserRouter } from 'react-router-dom'
 import "@testing-library/jest-dom/vitest";
 import { InfoPage } from "../../component/info/InfoPage";
 
-// test('should render the header component', () => {
-//     render(
-//         <BrowserRouter>
-//             <InfoPage />
-//         </BrowserRouter>
-//     );
-//     const headerElement = screen.getByRole('banner');
-//     expect(headerElement).toBeInTheDocument();
-// });
 
 describe('InfoPage Component Tests', () => {
     test('test_render_info_page_structure', () => {
