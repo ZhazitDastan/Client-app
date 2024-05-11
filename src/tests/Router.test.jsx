@@ -20,7 +20,7 @@ describe('TEST APP', () => {
     expect(window.location.pathname).toBe('/login');
   });
 
-  test('should redirect to the select "buynow page" when the "BUY NOW" button is clicked', () => {
+  test('should redirect to the "buynow page" when the "BUY NOW" button is clicked', () => {
     const buttonElement = screen.getByText('Buy now');
     fireEvent.click(buttonElement);
     expect(window.location.pathname).toBe('/buynow');

@@ -1,7 +1,7 @@
 import { render, waitFor,screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { test, vi } from "vitest";
-import { UserPage } from "./UserPage";
+import { UserPage } from "../../component/user/UserPage";
 import "@testing-library/jest-dom/vitest";
 
     test('should handle empty response body', async () => {
@@ -31,7 +31,7 @@ import "@testing-library/jest-dom/vitest";
 
           const signmafssage = screen.queryByText(<p>UNAUTHORIZED</p>);
           expect(signmafssage).not.toBeInTheDocument();
-        });
+        }); 
       });
 
     
