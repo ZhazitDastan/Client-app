@@ -9,7 +9,7 @@ const BillboardPage = () =>{
     return (
         <>
             <div className={styles.homeContainer}>
-                <div className={styles.homeTxTPosition}>
+                <div className={styles.homeTxTPosition} data-testid='BILLBOARD'>
                     <p className={styles.homeText}> BILLBOARD </p>
                 </div>
                 <div className={styles.getStarted}>
