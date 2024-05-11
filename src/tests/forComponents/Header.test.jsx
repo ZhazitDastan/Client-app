@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { test, vi } from "vitest";
-import { Header } from "./Header";
+import { Header } from "../../component/header/Header";
 import { fireEvent, render,screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import React from "react";
