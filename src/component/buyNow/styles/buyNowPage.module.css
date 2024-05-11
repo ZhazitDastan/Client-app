@@ -399,8 +399,96 @@
     width: 960px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-top: 20px;
 }
+
+.insertDataContent {
+    width: 460px;
+}
+
+.insertDataPrice {
+    width: 460px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.insertDataLocation {
+    width: 460px;
+    font-family: 'Rocher';
+    text-align: center;
+    font-size: 50px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@font-face {
+    font-family: 'Rocher';
+    src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+  }
+
+@font-palette-values --Grays {
+    font-family: Rocher;
+    base-palette: 9;
+  }
   
+  @font-palette-values --Purples {
+    font-family: Rocher;
+    base-palette: 6;
+  }
+  
+  @font-palette-values --Mint {
+    font-family: Rocher;
+    base-palette: 7;
+  }
+  
+  .grays {
+    font-palette: --Grays;
+    margin-bottom: 20px;
+  }
+  
+  .purples {
+    font-palette: --Purples;
+    margin-bottom: 20px;
+  }
+  
+  .mint {
+    font-palette: --Mint;
+    margin-bottom: 20px;
+  }
+
+.insertDataText {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;
+}
+
+.insertDataText2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #a99ec7;
+}
+
+.insertDataPriceInfo {
+    font-family: 'Rocher';
+    color: #F7971E;
+    font-weight: 400;
+    font-size: 15px;
+    color: #a99ec7;
+    margin-top: 40px;
+}
+
+.verticalLine {
+    border-left: 9px solid white; /* Thicker border for better visibility */
+    height: 150px; /* This sets the height of the vertical line */
+    margin: 0 10px; /* Space on the sides */
+    border-radius: 9px; /* Slightly rounded borders for a smoother look */
+    background-color: white; /* Adding a background color similar to the border */
+}

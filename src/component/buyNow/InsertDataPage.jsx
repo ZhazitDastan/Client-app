@@ -44,7 +44,20 @@ const InsertDataPage = () =>{
                         style={{ width: "1000px", height: "400px", objectFit: "cover", borderRadius: "20px", marginTop: "60px"}}
                     />
                     <div className={styles.insertDataContainer}>
-
+                        <div className={styles.insertDataContent}>
+                            <div className={styles.insertDataLocation}>
+                                <div className={styles.purples}>{selectedBillboard.location}</div>
+                            </div>
+                            <div className={styles.insertDataText}>{selectedBillboard.description}</div>
+                            <div className={styles.insertDataPrice}>
+                                <div className={styles.insertDataPriceInfo}>{selectedPricePackage.name} PACKAGE</div>
+                                <div className={styles.insertDataPriceInfo}>${selectedPricePackage.price}</div>
+                            </div>
+                        </div>
+                        <div className={styles.verticalLine}></div>
+                        <div className={styles.insertDataContent}>
+                            <div className={styles.grays}>Location</div>
+                        </div>
                     </div>
                </div>
             </main>
