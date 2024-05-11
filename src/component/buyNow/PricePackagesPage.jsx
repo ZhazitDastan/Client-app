@@ -1,16 +1,37 @@
+import { useEffect, useState } from "react";
 import styles from "../buyNow/styles/buyNowPage.module.css";
-import {Link, Navigate, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import { useToasts } from "react-toast-notifications";
 
 const PricePackagesPage = () =>{
-    // const location = useLocation();
-    // const selectedBillboard = location.state ? location.state.selectedBillboard : null;
+    const {addToast} = useToasts();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const selectedBillboard = location.state;
 
-    // if (!selectedBillboard) {
-    //     // Option 1: Redirect to a default page or
-    //     // Option 2: Display a message or handle the lack of data appropriately
-    //     return <Navigate to="/" />; // Redirect to homepage or a specific route
-    //     // return <div>No billboard selected.</div>; // or show a message
-    //   }
+    const [pricePackages, setPricePackages] = useState([]);
+    const [billboardPricePackage, setBillboardPricePackage] = useState([]);
+
+    useEffect(() => {
+        if(localStorage.getItem("role") !== "USER"){
+            addToast("Please first log in", {appearance:"error"});
+            navigate("/login");
+        }
+    }, []);
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/v1/price_packages/all_price_package", {
+            method:'GET',
+            headers:{"Content-Type":"application/json"}
+        })
+        .then(response => response.json())
+        .then(data => setPricePackages(data))
+        .catch(error => console.error('Error fetching price packages', error));
+    }, []);
+
+    const handleClick = () => {
+
+    }
 
     return (
         <>
@@ -20,70 +41,22 @@ const PricePackagesPage = () =>{
                     <p className={styles.mainText}>price packages</p>
                 </div>
                 <div className={styles.content1}>
-                    <div className={styles.box1}>
-                        <h2 className={`${styles.allText} ${styles.self1}`}> WEEKLY </h2>
-                        <h2 className={`${styles.allText} ${styles.self1}`}> PACKAGE </h2>
+                {pricePackages.map((pricePackage, index) => (
+                    <div className={styles.box1} key={pricePackage.id}>
+                        <h2 className={`${styles.allText} ${styles[`self${index+1}`]}`}>{pricePackage.name}</h2>
+                        <h2 className={`${styles.allText} ${styles[`self${index+1}`]}`}> PACKAGE </h2>
                         <div className={styles.line}></div>
-                        <p className={styles.paragraphStyle}>Benefit: Perfect for short-term campaigns or events. Immediate exposure to high traffic areas.</p>
-                        {/* <p>Usage: Expressways</p>
-                        <p>Located: Highways</p> */}
+                        <p className={styles.paragraphStyle}>{pricePackage.description}</p>
                         <div className={styles.priceBox}>
-                            <span className={styles.price}>500$</span>
+                            <span className={styles.price}>{pricePackage.price}$</span>
                         </div>
                         <div>
-                        <Link to={"#"}>
-                            <button className={styles.button85} type={"button"}> BUY NOW</button>
+                        <Link to={"/buynow/insert"} state={[selectedBillboard, pricePackage]}>
+                            <button className={styles.button85} type={"button"} onClick={handleClick}> BUY NOW</button>
                         </Link>
                         </div>
                     </div>
-                    <div className={styles.box1}>
-                        <h2 className={`${styles.allText} ${styles.self2}`}> MONTHLY </h2>
-                        <h2 className={`${styles.allText} ${styles.self2}`}> PACKAGE </h2>
-                        <div className={styles.line}></div>
-                        <p className={styles.paragraphStyle}>Benefit: Extended visibility for your brand. Ideal for sustained campaigns or product launches.</p>
-                        
-                        <div className={styles.priceBox}>
-                            <span className={styles.price}>1500$</span>
-                        </div>
-
-                        <div>
-                            <Link to={"#"}>
-                                <button className={styles.button85}  type={"button"}> BUY NOW</button>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className={styles.box1}>
-                        <h2 className={`${styles.allText} ${styles.self3}`}> 3-MONTH </h2>
-                        <h2 className={`${styles.allText} ${styles.self3}`}> PACKAGE </h2>
-                        <div className={styles.line}></div>
-                        <p className={styles.paragraphStyle}>Benefit: Cost-effective option for longer campaigns. Covers multiple seasons for maximum impact.</p>
-                        
-                        <div className={styles.priceBox}>
-                            <span className={styles.price}>4000$</span>
-                        </div>
-
-                        <div>
-                            <Link to={"#"}>
-                                <button className={styles.button85} type={"button"}> BUY NOW</button>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className={styles.box1}>
-                        <h2 className={`${styles.allText} ${styles.self4}`}> YEARLY </h2>
-                        <h2 className={`${styles.allText} ${styles.self4}`}> PACKAGE </h2>
-                        <div className={styles.line}></div>
-                        <p className={styles.paragraphStyle}>Benefit:Comprehensive coverage for a full year. Ensures consistent brand presence and visibility.</p>
-                        
-                        <div className={styles.priceBox}>
-                            <span className={styles.price}>12000$</span>
-                        </div>
-                                            
-                        <div>
-                            <Link to={"#"}>
-                                <button className={styles.button85} type={"button"}> BUY NOW</button>
-                            </Link>
-                        </div>
-                    </div>
+                ))}
                 </div>
                </div>
             </main>

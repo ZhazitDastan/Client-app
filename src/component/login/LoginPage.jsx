@@ -1,13 +1,16 @@
 import styles from "./styles/login.module.css";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import mainSDU from "../../assets/main_SDU.png"
 import mainAmazon from "../../assets/main_amazon.png"
 import mainBillboard from "../../assets/main_LOGO.png"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
+
 
 const LoginPage = () =>{
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [formData, setFormData] = useState({
         username: '',
@@ -26,15 +29,15 @@ const LoginPage = () =>{
         localStorage.clear();
         try {
             const res = await fetch("http://localhost:8080/auth/signin",{
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(formData)
-        })
-            console.log("Form was submitted")
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(formData)
+            })
             if(res.ok) {
-                const json = await res.text()
-                console.log(json)
-                localStorage.setItem("token", json)
+                const token = await res.text()
+                localStorage.setItem("token", token)
+                const decodedToken = jwtDecode(token)
+                localStorage.setItem("role", decodedToken.role)
                 navigate("/billboard")
             }
             else {
