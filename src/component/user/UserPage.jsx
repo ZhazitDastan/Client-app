@@ -34,7 +34,7 @@ const UserPage = () =>{
     return (
         <>
             <main className={styles.container}>
-                <div className={styles.content}>
+                <div className={styles.content} data-testid="signed">
                     {
                         item !== null ?
                         <p>Signed in as {username}</p> :
