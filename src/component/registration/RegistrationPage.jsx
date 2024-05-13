@@ -7,10 +7,12 @@ import mainAmazon from "../../assets/main_amazon.png";
 import { useState } from "react";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useToasts } from "react-toast-notifications";
 
 const RegistrationPage = () =>{
 
     const navigate = useNavigate();
+    const {addToast} = useToasts();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -70,15 +72,15 @@ const RegistrationPage = () =>{
                 body: JSON.stringify(formData)
             });
             if (res.ok) {
-                alert("Success");
+                addToast("Success" , {appearance:"success"});
                 navigate("/login");
             } else {
                 console.error('HTTP Error:', res.status); 
-                alert("Signup failed: " + (await res.text()));
+                addToast("Signup failed: " + (await res.text()), {appearance:"error"});
             }
         } catch (error) {
             console.error('Network or other error:', error); 
-            alert("Signup failed: " + error.message);
+            addToast("Signup failed: " + error.message, {appearance:"error"});
         }
     }
 

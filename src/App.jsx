@@ -14,18 +14,12 @@ import {Header} from './component/header/Header.jsx';
 import {Footer} from './component/footer/Footer.jsx';
 import { ToastProvider } from 'react-toast-notifications';
 import { InsertDataPage } from './component/buyNow/InsertDataPage.jsx';
+import { PaymentPage } from './component/buyNow/PaymentPage.jsx';
 
 function App() {
     
   return (
     <>
-        {/*<header>*/}
-        {/*    <Link to="/">info</Link>*/}
-        {/*    <Link to="/login">login</Link>*/}
-        {/*    <Link to="/registraion">registration</Link>*/}
-        {/*    <Link to="/buynow">buy now</Link>*/}
-        {/*    <Link to="/billboard">billboard</Link>*/}
-        {/*</header>*/}
         <ScrollToTop /> 
         <Header />
         <ToastProvider placement="top-center">
@@ -37,6 +31,7 @@ function App() {
             <Route path="/buynow" element={<SelectBillboardPage />}/>
             <Route path="/buynow/packages" element={<PricePackagesPage />}/>
             <Route path="/buynow/insert" element={<InsertDataPage />}/>
+            <Route path="/buynow/payment" element={<PaymentPage />}/>
             <Route path="/billboard" element={<BillboardPage />}/>
             <Route path="/my" element={<UserPage />}/>
             <Route path="*" element={<NotFoundPage />}/>

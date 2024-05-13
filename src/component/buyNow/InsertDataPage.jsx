@@ -15,6 +15,7 @@ const InsertDataPage = () =>{
     const location = useLocation();
     const selectedBillboard = location.state[0];
     const selectedPricePackage = location.state[1];
+    const [chosenDate, setChosenDate] = useState('');
 
     useEffect(() => {
         if(localStorage.getItem("role") !== "USER"){
@@ -29,6 +30,35 @@ const InsertDataPage = () =>{
         ShalyapinaBillboard: ShalyapinaBillboard,
         ZhandosovaBillboard: ZhandosovaBillboard,
         NazarbayevBillboard: NazarbayevBillboard
+    };
+
+    const [image, setImage] = useState(null);
+
+    const handleChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setImage(reader.result);
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleDateChange = (event) => {
+        setChosenDate(event.target.value);
+    };
+
+    const addYear = () => {
+        if (chosenDate) {
+          const dateObj = new Date(chosenDate);
+          dateObj.setFullYear(dateObj.getFullYear() + 1);
+          const newDate = dateObj.toISOString().split('T')[0];
+          return newDate;
+        }
+        return '';
     };
 
     return (
@@ -56,9 +86,23 @@ const InsertDataPage = () =>{
                         </div>
                         <div className={styles.verticalLine}></div>
                         <div className={styles.insertDataContent}>
-                            <div className={styles.grays}>Location</div>
+                            <div style={{marginBottom:'10px'}} className={styles.insertDataPriceInfo}>Choose date for billboard display</div>
+                            <div className={styles.chooseDateContainer}> 
+                                <div className={styles.insertDataDate}>
+                                <input type="date" id="datePicker" name="datePicker" value={chosenDate} onChange={handleDateChange}/>
+                                </div>
+                                <div className={styles.startEndDateContainer}>
+                                    <div className={styles.startDate}><div className={styles.startEndDate}>Start date: </div> {chosenDate && <p className={styles.startDateText}>{chosenDate}</p>} </div>
+                                    <div className={styles.startDate}><div className={styles.startEndDate}>End date: </div> {chosenDate && <p className={styles.startDateText}>{addYear()}</p>} </div>
+                                </div>
+                            </div>
+                            <input type="file" onChange={handleChange} />
+                            {image && <img src={image} alt="Uploaded" style={{ maxWidth: '100px' }} />}
                         </div>
                     </div>
+                    <Link to={"/buynow/payment"}>
+                        <button className={styles.buttonFinal} style={{ marginTop: '15px'}}>BUY NOW</button>
+                    </Link>
                </div>
             </main>
         </>
