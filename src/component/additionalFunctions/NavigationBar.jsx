@@ -23,11 +23,10 @@ const NavigationBar = () => {
             {routes.slice(0, currentRouteIndex + 1).map(route => (
                 <span key={route.path}>
                     <Link to={route.path}>{route.name}</Link>
-                    {route.path !== location.pathname && ' > '}
+                    {route.path !== location.pathname && <span className={styles.separator}> &gt; </span>}
                 </span>
             ))}
         </div>
     );
 };
-
 export default NavigationBar;

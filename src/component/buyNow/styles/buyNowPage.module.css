@@ -283,7 +283,7 @@
 
 .infoWindowDescriptionName {
     font-size: 12px;
-    font-weight: 'bold';
+    weight: bold;
 }
 
 .button31 {
@@ -592,6 +592,8 @@
 .formGroup label {
     display: block;
     margin-bottom: 5px;
+    color: white;
+    font-family: "Inter", sans-serif;
 }
 
 .formGroup input[type="text"] {
