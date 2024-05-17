@@ -43,13 +43,15 @@ const LoginPage = () =>{
                 addToast("Welcome", {appearance:"success"})
             }
             else {
-                console.error('HTTP Error:', res.status); 
-                alert("Signup failed: " + (await res.text()));
+                console.error('HTTP Error:', res.status);
+                addToast("Sign in error", {appearance:"error"})
+                // alert("Signup failed: " + (await res.text()));
             }
         }
         catch (error) {
             console.error('Network or other error:', error); 
-            alert("Signup failed: " + error.message);
+            // alert("Signup failed: " + error.message);
+            addToast("Sign in error", {appearance:"error"})
         }
     }
 
