@@ -15,6 +15,7 @@ import {Footer} from './component/footer/Footer.jsx';
 import { ToastProvider } from 'react-toast-notifications';
 import { InsertDataPage } from './component/buyNow/InsertDataPage.jsx';
 import { PaymentPage } from './component/buyNow/PaymentPage.jsx';
+import NavigationBar from './component/additionalFunctions/NavigationBar.jsx';
 
 function App() {
     
@@ -22,6 +23,7 @@ function App() {
     <>
         <ScrollToTop /> 
         <Header />
+        <NavigationBar />
         <ToastProvider placement="top-center">
         <Routes>
             <Route path="/" element={<HomePage />}/>
